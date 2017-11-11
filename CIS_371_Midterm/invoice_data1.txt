@@ -1,0 +1,5 @@
+Grand Rapids,  Lansing,  68, 55
+Lansing, Jackson, 39, 27
+Jackson, Traverse City, 214, 187
+Traverse City, Alpena, 127, 250
+Alpena, Grand Rapids, 239, 249

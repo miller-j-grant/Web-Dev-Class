@@ -1,0 +1,52 @@
+#top{
+    column-count: 1;
+}
+#outer{
+    column-count: 1;
+}
+#top img{
+    float: right;
+    margin: 0 0 5px 5px;
+}
+body{
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: medium;
+    color: black;
+}
+#outer, #inner p{
+    font-size: small;
+}
+ul{
+    color: blue;
+}
+.best{
+    font-style: italic;
+}
+a:link{
+    color:red;
+}
+a:visited{
+    color: green;
+}
+#outer{
+    margin: 2px;
+}
+#inner td, #inner th{
+    border: 1px solid black;
+}
+.odd{
+    background: gray;
+}
+.links{
+    font-family: "sans-serif";
+}
+ol{
+    list-style-type: lower-alpha;
+}
+#outer h2{
+    text-align: center;
+}
+#outer img{
+    display: block;
+    margin: auto;
+}

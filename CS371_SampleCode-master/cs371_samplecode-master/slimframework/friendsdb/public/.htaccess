@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . /~kurmasz/CS371_SampleCode/SlimFramework/FriendsDB/public/index.php [L]

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Closure Example 2</title>
+</head>
+<body>
+
+
+<h1>Closure Example 2</h1>
+
+<ul id="report">
+
+</ul>
+
+<script type="text/javascript">
+
+
+    // Notice that the functions are nested.
+    // (1) The handler function is nested inside the delayAppearance function
+    // (2) Therefore, handler has access to the variables local to delayAppearance (e.g., message)
+    //     (This is similar to instance methods having access to both local variables and instance variables)
+    // (3) Each call to delayAppearance is separate, creating a separate copy of "message" for use by the handler.
+    function delayAppearance(message, delay) {
+        var handler = function () {
+            var ul = document.getElementById("report");
+            var li = document.createElement("li");
+            li.innerHTML = message;
+            ul.appendChild(li);
+        };
+        setTimeout(handler, delay * 1000);
+    }
+
+    delayAppearance("First (after one second)", 1);
+    delayAppearance("Second (after three seconds)", 3);
+    delayAppearance("Third (after four seconds)", 4);
+
+    // Note:  This won't work in languages like C and C++, because the storage space is reclaimed after
+    // delayAppearances finishes.
+    //
+    // However, in JavaScript (and many other languages), the local variables are kept around until it is no longer
+    // needed.  This idea that the local variables are kept around and kept available to the nested function, even after
+    // the outer function returns is called a "closure".
+    //
+    // Java 7 supports this idea in limited contexts (in particular, when the variables are final --- can't change).
+    // Java 8 adds a more complete closure implementation.
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<html>
+<body>
+<h1>All Friends</h1>
+
+<table>
+    <tr><th>First name</th><th>Last name</th></th><th>Phone</th><th>Age</th></tr>
+<?php foreach ($data['friends'] as $row) { ?>
+    <tr><td><?= $row['firstname']?></td>
+        <td><?= $row['lastname']?> </td>
+        <td><?= $row['phone']?> </td>
+        <td><?= $row['age']?> </td>
+    </tr>
+<?php } ?>
+</table>
+<hr>
+</body>
+</html>

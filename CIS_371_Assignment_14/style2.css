@@ -1,0 +1,9 @@
+table, tr, td{
+    border: 1px solid black;
+}
+#eventDetails {
+    display: inline-block;
+    border: 1px solid black;
+    background-color: lightgreen;
+    min-width: 200px;
+}

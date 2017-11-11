@@ -1,0 +1,14 @@
+<!ELEMENT events (event*) >
+        <!ELEMENT event (id, title, date, start, stop, description?)>
+        <!ELEMENT id (#PCDATA)>
+        <!ELEMENT title (#PCDATA)>
+
+        <!ELEMENT date EMPTY>
+        <!ATTLIST date month CDATA #REQUIRED>
+        <!ATTLIST date day CDATA #REQUIRED>
+        <!ATTLIST date year CDATA #IMPLIED>
+
+        <!ELEMENT start (#PCDATA)>
+        <!ELEMENT stop (#PCDATA)>
+
+        <!ELEMENT description (#PCDATA)>

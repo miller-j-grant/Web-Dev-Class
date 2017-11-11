@@ -1,0 +1,12 @@
+/*#textAndImage{
+    column-count: 2
+}*/
+textarea{
+    height: 625px;
+    width: 540px;
+    resize: none;
+}
+/*#detailForm{
+	position: relative;
+	top: 630px;
+}*/

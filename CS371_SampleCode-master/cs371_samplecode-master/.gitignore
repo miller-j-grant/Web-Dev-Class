@@ -1,0 +1,9 @@
+.idea
+*.iml
+*.class
+out
+.DS_Store
+*.swp
+*~
+#*
+.rsync-filter

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Closure Example</title>
+</head>
+<body>
+
+<h1>Closure Example 1</h1>
+
+<ul id="report">
+
+</ul>
+
+<script type="text/javascript">
+
+    // This is "the hard way".  Notice that the code in handler1 and handler2 is repeated.
+
+    var handler1 = function () {
+        var ul = document.getElementById("report");
+        var li = document.createElement("li");
+        li.innerHTML = "First (after one second)";
+        ul.appendChild(li);
+    };
+    setTimeout(handler1, 1000);  // setTimeout is built into JavaScript.
+
+
+    var handler2 = function () {
+        var ul = document.getElementById("report");
+        var li = document.createElement("li");
+        li.innerHTML = "Second (after three seconds)";
+        ul.appendChild(li);
+    };
+    setTimeout(handler2, 3000);
+
+
+    // We can save some work by making the handler anonymous.
+    setTimeout(function () {
+        var ul = document.getElementById("report");
+        var li = document.createElement("li");
+        li.innerHTML = "Third (after four seconds)";
+        ul.appendChild(li);
+    }, 4000);
+
+
+    // It would be nice if we could use the same function for the handler so
+    // we didn't have to repeat it so often:
+    // But, there is a problem:  The code that calls timerHandler doesn't have
+    // any way to pass the parameter 'message' because the interface for the 
+    // handler must be defined ahead of time.
+
+    function timerHandler_that_does_not_work(message) {
+        var ul = document.getElementById("report");
+        var li = document.createElement("li");
+        li.innerHTML = message;
+        ul.appendChild(li);
+    }
+
+    // In other words, there is no way to get a message into the handler
+    // without modifying the implementation of setTimeout
+    //setTimeout(timerHandler, 5000);
+
+
+    // Idea #2 use a global variable
+
+
+    var globalMessage;
+
+    function timerHandler_that_almost_works() {
+        var ul = document.getElementById("report");
+        var li = document.createElement("li");
+        li.innerHTML = globalMessage;
+        ul.appendChild(li);
+    }
+
+
+    globalMessage = "Fourth (after six seconds)";
+    setTimeout(timerHandler_that_almost_works, 6000);
+    globalMessage = "Fifth (after seven seconds)";
+    setTimeout(timerHandler_that_almost_works, 7000);
+
+    // Notice that "fifth" appears twice.  Why?
+
+
+</script>
+
+</body>
+</html>

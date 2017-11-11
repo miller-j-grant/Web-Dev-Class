@@ -1,0 +1,205 @@
+<!DOCTYPE HTML SYSTEM "http://www.cis.gvsu.edu/~kurmasz/HTML4-loose-kielce.dtd">
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
+    <title>CS 371 -- Write a Simple Web Server</title>
+    <script type="text/javascript" src="kielce3.js"></script>
+    <style type="text/css">
+        .listHeader {
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        ul {
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+
+<table style="border:  0; width: 100%">
+    <tr>
+        <td style="width: 15%"><h1 style="text-align: left; white-space: nowrap;" kkey="courseName">CS 371</h1></td>
+        <td style="width: 70%">
+            <h1 style="text-align: center">Assignment 5:<br>Write a Basic Web Server</h1></td>
+        <td style="width: 15%"><h1 style="text-align: right; white-space: nowrap" kkey="semesterName"></h1></td>
+    </tr>
+</table>
+
+<p>Write a simple web server that can serve HTML, plain text, and images.</p>
+
+<h2>Objective</h2>
+
+Learn the inner workings of a basic web server to better understand what underlies web platforms. In particular,
+students will observe the details of
+<ul>
+    <li> interpreting an incoming request,</li>
+    <li> identifying and finding the requested resource,</li>
+    <li> preparing the proper response (which may be an error message), and</li>
+    <li> delivering the content (which could be either text or binary data).</li>
+</ul>
+
+<h2 class="listHeader">Details</h2>
+<ul>
+    <li>You may work on this assignment in teams of at most two.</li>
+    <li>You may use any language you like. Realize, however, that I will be of limited help if you choose something
+        other than Java. (I know C, C++, and Ruby well; but, I don't know much about the particular networking
+        libraries.
+        I do not know any <code>.net</code> languages. I do not know Windows well.)
+
+    </li>
+    <li>You may use standard socket and I/O libraries. You may <em>not</em> use any libraries that implement significant
+        web server functionality (e.g., <code>com.sun.net.httpserver</code>).
+    </li>
+    <li>Cite <em>any</em> sources you consult. Avoid articles that provide complete (or nearly complete) solutions.</li>
+    <li>Your web server must be able to serve html, images, and plain text.</li>
+    <li>You response headers must include <code>Content-Type</code> and <code>Content-Length</code>. (You may assume the
+        content type from the file's extension.)
+    </li>
+    <li>You must respond correctly to missing and/or unreadable files.</li>
+    <li>When run from EOS/Arch, your server must correctly handle the tilde (e.g., "<code>http://www.cis.gvsu.edu/~kurmasz</code>").
+    </li>
+</ul>
+
+<b>Extra Credit:</b> Have your server support persistent connections (i.e., send all documents in one connection).
+
+<h2 class="listHeader">Hints and Resources</h2>
+<ul>
+    <li>My solution is 120 lines of Java code. If you find that you need many more lines than this, then you may be
+        making the assignment more difficult than necessary.
+    </li>
+    <li>Use a <a href="http://docs.oracle.com/javase/7/docs/api/java/io/PrintStream.html">PrintStream</a> instead of a
+        <a href="http://docs.oracle.com/javase/7/docs/api/java/io/PrintWriter.html">PrintWriter</a>. (The <code>PrintStream</code>
+        will allow you to write both String and binary data, which is helpful when handing images. For the most part,
+        <code>PrintStream</code> and <code>PrintWriter</code> have identical interfaces, so you can easily interchange
+        them.)
+    </li>
+    <li>Browse <a href="http://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Response_fields">this document</a> for a
+        list of response header fields that you may want to implement.
+    </li>
+    <li>Use <a href="html">these files</a> as a starting point for testing your server.</li>
+</ul>
+
+<p class="listHeader">Steps in completing project:</p>
+<ol>
+    <li>Complete the <a href="beginWebServer.html">in-class assignment</a>:
+        <ol type="i">
+            <li>Create a Server socket, accept a connection, set up the input and output.</li>
+            <li>Read the "GET" line from the client.</li>
+            <li>Use a loop to read all the request headers. Print them to the standard output.</li>
+        </ol>
+    </li>
+    <li>Parse the "GET" line (e.g., using <code>String.split</code>.)</li>
+    <li>Open the requested file.</li>
+    <li>Print the required response headers (<code>Content-type</code> and <code>Content-length</code>) (You may base
+        the content-type on the file
+        extension.)
+    </li>
+    <li>Use a loop to
+        <ul>
+            <li>Read a block of data from the file then</li>
+            <li>Write the data to the socket</li>
+        </ul>
+        For a text file, you can read and write one line at a time. For a data file (like an image), you will want to
+        use the raw <code>read</code> method to read a block of data (typically a few Kilobytes), then use the
+        corresponding <code>write</code> method to write it to the socket. The <code>read</code> method typically
+        returns the amount of data read, which may be less than your buffer size. You can write a text file this way
+        also (which means you don't need separate code to handle text and data).
+    </li>
+    <li>Finally, close the socket.</li>
+</ol>
+
+
+<p class="listHeader">To test your server</p>
+<ul>
+    <li>Create a folder named "<code>data</code>" in your project,</li>
+    <li>Put some test files in this folder (e.g., a few <code>.html</code> files, a few <code>.txt</code> files and a
+        few images),
+    </li>
+    <li>Launch your server on some port (e.g., 8080) from your project directory (i.e., the one that contains
+        <code>data</code>)
+    </li>
+    <li>Point your web browser to "<code>localhost:8080/data/file1.html</code>"</li>
+</ul>
+
+
+<h2>Security</h2>
+
+
+<p class="listHeader">This program allows clients access to files on your computer. This is a potential security risk.
+    Here are some ways
+    to protect yourself:
+<ul>
+    <li>Only run the program for a few minutes at a time. (Don't leave it running unless you are testing it.)</li>
+    <li>Choose a different port number each time you run it.</li>
+    <li>Only serve files that are below the directory from which the server is launched. Ignore requests for other
+        files.
+    </li>
+    <li>Only accept connections from trusted clients. For example, you can choose to accept connections only from
+        yourself:
+        <code>if (!clientSocket.getInetAddress().isLoopbackAddress()) { return;} </code>
+    </li>
+</ul>
+
+<p>Of course, I can't guarantee that there aren't other Java or Operating System bugs that
+    could be exploited. If you still have concerns, run your program on one of the EOS or Arch machines instead.</p>
+
+
+<h2>Grading</h2>
+
+<p>Before I will grade this assignment, you must present a written testing plan. Automatic tests (JUnit, Cucumber, etc.)
+    are optional, but you must have a written plan demonstrating that you have tested all the features of your web
+    server. (I expect that most if this written plan will be a list of requests you have a web browser make to your web
+    server and the expected response.)</p>
+
+Your score is based on when your server is 100% correct.
+<ul>
+    <li> Friday before noon: Full credit.</li>
+    <li> 2% penalty before class Monday</li>
+    <li>5% penalty per day after next Monday.</li>
+</ul>
+
+Your code must be well-organized and documented. I will deduct points for uncommented and or "spaghetti" code.
+
+<hr>
+
+<h2>More Sample Code</h2>
+
+<p>In Java, the <code>File</code> object provides access to data about a file.</p>
+
+<pre>
+     File file = new File(filename);
+      if (!file.exists()) {
+        out.println("HTTP/1.1 404 NOT FOUND");
+        out.println("");
+      }
+</pre>
+
+<p>Use a <code>FileInputStream</code> to access the contents of the file:</p>
+<pre>
+    InputStream fileIn = null;
+    try {
+       fileIn = new FileInputStream(file); // Can also pass the constructor a String
+        byte[] buffer = new byte[1024];
+        int amount_read = fileIn.read(buffer); // read up to 1024 bytes of raw data
+        out.write(buffer, 0, amount_read); // write data back out to an OutputStream
+
+</pre>
+
+<p>You will need to use the "raw" <code>read</code> method to read images.</p>
+
+
+<hr>
+
+<span kkey="validator"></span>
+
+<script type="text/javascript">
+    Kielce.run();
+</script>
+</body>
+</html>

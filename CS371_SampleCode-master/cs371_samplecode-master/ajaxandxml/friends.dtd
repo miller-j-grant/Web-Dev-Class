@@ -1,0 +1,23 @@
+<!ELEMENT friends (friend*) >
+        <!ELEMENT friend (id, name, phone+, birthday?, (address|hobby)*, note?)>
+        <!ELEMENT id (#PCDATA)>
+        <!ELEMENT phone (#PCDATA)>
+        <!ATTLIST phone type (home|work|cell) "cell">
+        
+        <!ELEMENT address (line+, city, state, zip, country?)>
+        <!ELEMENT line (#PCDATA)>        
+        <!ELEMENT city (#PCDATA)>
+        <!ELEMENT state (#PCDATA)>
+        <!ELEMENT zip (#PCDATA)>
+        <!ELEMENT country (#PCDATA)>
+
+        <!ELEMENT hobby (#PCDATA)>
+        <!ELEMENT note (#PCDATA)>
+        
+        <!ELEMENT birthday EMPTY>
+        <!ATTLIST birthday month CDATA #REQUIRED>
+        <!ATTLIST birthday day CDATA #REQUIRED>
+        <!ATTLIST birthday year CDATA #IMPLIED>
+        
+        
+        <!ELEMENT name (#PCDATA)>

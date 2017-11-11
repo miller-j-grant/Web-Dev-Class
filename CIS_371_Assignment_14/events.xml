@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl"?>
+<!-- -
+Ask about the href="displayAllFriends.xsl" and what is going on in that document.
+<!- -->
+<!DOCTYPE events SYSTEM "events.dtd">
+<events>
+    <event>
+        <id>1</id>
+        <title>Do Sport</title>
+        <date month="6" day="7"/>
+        <start>1:00pm</start>
+        <stop>4:00pm</stop>
+        <description>Play some sportsball!</description>
+    </event>
+    <event>
+        <id>2</id>
+        <title>Dentist Appointment</title>
+        <date month="6" day="22"/>
+        <start>3:00pm</start>
+        <stop>4:00pm</stop>
+    </event>
+    <event>
+        <id>3</id>
+        <title>Death From Above 1979 Album Release</title>
+        <date month="6" day="12" year="2017"/>
+        <start>7:00am</start>
+        <stop>7:00pm</stop>
+        <description>NEW ALBUM!!!</description>
+    </event>
+<event><id>4</id><title>Testing</title><date month="6" day="9" year="2017"/><start>8:30am</start><stop>9:00am</stop><description>test test test</description></event></events>

@@ -1,0 +1,10 @@
+.heading{
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+.lastrow{
+    border-top: 1px solid black;
+}
+.number{
+    text-align: right;
+}

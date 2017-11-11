@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hideable Line Demo</title>
+
+    <script type="text/javascript">
+
+        // This function returns an event handler.
+        // By having a function "make" the event handler,
+        // the specific value of hideableItem is saved in a closure.
+        // This closure remembers the specific <li> object you want
+        // associated with the button press.
+        function makeHandler(hideableItem) {
+            return function toggleList(event) {
+                console.log(hideableItem.style.display);
+                hideableItem.style.display = "none";
+            }
+        }
+
+
+        // Iterate through the entire list and add a handler to each <li>
+        // Notice that the handler is returned from the function makeHandler.
+        // Calling makeHandler allows us to capture and remember the specific
+        // <li> object connected with a given click.
+        function makeItemsHideable(list) {
+            var elements = list.getElementsByTagName("li");
+            for (var i = 0; i < elements.length; i++) {
+                var li = elements[i];
+                var hideButton = li.getElementsByClassName("hideMe")[0];
+                hideButton.addEventListener("click", makeHandler(li));
+            }
+        }
+
+        // "unhide" each <li> object in the list.
+        function restoreAll(list) {
+            var elements = list.getElementsByTagName("li");
+            for (var i = 0; i < elements.length; i++) {
+                var li = elements[i];
+                // "" may not be the right value in all cases.
+                // using jQuery will automate this.
+                li.style.display = "";
+            }
+        }
+
+
+        // Don't apply the event listeners until the document has loaded.
+        document.addEventListener("readystatechange", function () {
+            if (document.readyState === "interactive") {
+                var theList = document.getElementById('list1');
+                makeItemsHideable(theList);
+                document.getElementById('restore').addEventListener("click", function () {
+                    restoreAll(theList);
+                })
+            }
+        });
+    </script>
+
+
+</head>
+<body>
+
+
+My List with hideable lines
+<ul id="list1">
+    <li>Michigan <span class="hideMe">(Hide Me)</span> <span>(Edit Me)</span></li>
+    <li>Ohio <span class="hideMe">(Hide Me)</span> <span>(Edit Me)</span></li>
+    <li>Georgia <span class="hideMe">(Hide Me)</span> <span>(Edit Me)</span></li>
+    <li>California <span class="hideMe">(Hide Me)</span> <span>(Edit Me)</span></li>
+</ul>
+
+<div id="restore">(Restore all hidden)</div>
+</body>
+</html>

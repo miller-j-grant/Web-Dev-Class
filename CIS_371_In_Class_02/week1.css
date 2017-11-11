@@ -1,0 +1,37 @@
+#CIS{
+    column-count: 3;
+    text-align: justify;
+    text-justify: inter-word;
+}
+#CIS h3{
+    column-span: all;
+}
+#courses{
+    column-count: 3;
+}
+#CS :nth-of-type(5){
+    font-weight: bold;
+}
+#CS, #IS{
+    font-family: "Times New Roman", Times, serif;
+}
+table{
+    border: 3px solid gray;
+}
+th, td{
+    border: 1px solid black;
+}
+#CIS p, td{
+    color: blue;
+}
+.imp{
+    color: red;
+}
+#CIS h3{
+    text-align: center;
+    background: darkgray;
+}
+.col_1 h3, .col_2 h3, .col_3 h3{
+    text-align: center;
+    background: green;
+}

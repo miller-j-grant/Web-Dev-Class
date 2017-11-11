@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="displayAllFriends.xsl"?>
+<!DOCTYPE friends SYSTEM "friends.dtd">
+<friends>
+    <friend>
+        <id>1</id>
+        <name>George Washington</name>
+        <phone type="home">404-331-8688</phone>
+        <birthday month="2" day="22" year="1732"/>
+        <address>
+            <line>301 Main Street</line>
+            <line>Apt. 2b</line>
+            <city>Mount Vernon</city>
+            <state>VA</state>
+            <zip>08892</zip>
+        </address>
+
+        <hobby>Fathering Countries</hobby>
+        <note>Cannot tell a lie</note>
+    </friend>
+    <friend>
+        <id>2</id>
+        <name>John Adams</name>
+        <phone>454-331-8688</phone>
+        <birthday month="10" day="30" year="1735"/>
+        <address>
+            <line>301 Main Street</line>
+            <line>Apt. 2b</line>
+            <city>Boston</city>
+            <state>MA</state>
+            <zip>01232</zip>
+        </address>
+        <hobby>Writing constitutions</hobby>
+    </friend>
+    <friend>
+        <id>3</id>
+        <name>Thomas Jefferson</name>
+        <phone type="home">212-991-8688</phone>
+        <phone type="work">212-991-8689</phone>
+        <phone type="cell">212-991-8690</phone>
+        <birthday month="4" day="13" year="1743"/>
+        <address>
+            <line>301 Main Street</line>
+            <line>Monticello</line>
+            <city>Monticello</city>
+            <state>VA</state>
+            <zip>21232</zip>
+        </address>
+
+        <hobby>Writing Declarations of Independence</hobby>
+        <hobby>Architecture</hobby>
+    </friend>
+    <friend>
+        <id>4</id>
+        <name>James Madison</name>
+        <phone>212-991-8688</phone>
+        <birthday month="7" day="16" year="1751"/>
+        <address>
+            <line>301 Main Street</line>
+            <city>Monticello</city>
+            <state>VA</state>
+            <zip>21232</zip>
+        </address>
+        <hobby>Writing Constitutions</hobby>
+    </friend>
+    <friend>
+        <id>5</id>
+        <name>James Monroe</name>
+        <phone>212-991-4432</phone>
+        <address>
+            <line>322 Dolly Street</line>
+            <city>Somewheresville</city>
+            <state>VA</state>
+            <zip>21335</zip>
+        </address>
+        <note>British burned the White House under his watch!</note>
+    </friend>
+</friends>
